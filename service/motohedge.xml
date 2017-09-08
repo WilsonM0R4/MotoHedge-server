@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MotoHedge"
+	targetNamespace="http://localhost:8080/MotoHedge/main.php"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://localhost:8080/MotoHedge/main.php"
+	xmlns:xsd="http://localhost:8080/MotoHedge/service/elements.xml">	
+
+	<message name="LoginRequest">
+		<part name="params" element="xsd:loginElement"/>
+	</message>
+
+	<message name="LoginResponse">
+		<part name="response" element="xsd:loginResponse"/>		
+	</message>
+
+	<message name="RegisterRequest">
+		<part name="params" element="xsd:registerElement"/>
+	</message>
+
+	<message name="RegisterResponse">
+		<part name="response" element="xsd:responseInformation"/>
+	</message>
+
+	<message name="SessionStatusRequest">
+		<part name="params" element="xsd:sessionStateElement"/>
+	</message>
+
+	<message name="SessionStatusResponse">
+		<part name="response" element="xsd:responseInformation"/>
+	</message>
+
+	<message name="SignOutRequest">
+		<part name="params" element="xsd:responseInformation"/>
+	</message>
+
+	<message name="SignOutResponse">
+		<part name="response" element="xsd:responseInformation"/>
+	</message>
+
+	<message name="InfoUpdateRequest">
+		<part name="params" element="xsd:infoUpdateElement"/>		
+	</message>
+
+	<message name="InfoUpdateResponse">
+		<part name="response" element="xsd:responseInformation"/>
+	</message>
+
+	<message name="ServiceRequest">
+		<part name="params" element="xsd:serviceRequestType"/>
+	</message>
+
+	<message name="UpdateServiceRequest">
+		<part name="params" element="xsd:serviceUpdateType"/>
+	</message>
+
+	<message name="UpdateServiceResponse">
+		<part name="result" element="xsd:string"/>
+	</message>
+
+	<message name="ServiceResponse">
+		<part name="response" element="xsd:servicesListType"/>
+	</message>
+
+	<!--message name="GetServicesResponse">
+		<part name="services" element="xsd:service"/>
+	</message-->	
+
+	<message name="GetUserServicesRequest">
+		<part name="params" element="xsd:getServiceRequestType"/> 
+	</message>
+
+	<message name="GetUserServicesResponse">
+		<part name="response" element="xsd:servicesListType"/>
+	</message>
+
+	<portType name="ServicePortType">
+		<operation name="signIn">
+			<input message="tns:LoginRequest"/>
+			<output message="tns:LoginResponse"/>
+		</operation>
+
+		<operation name="register">
+			<input message="tns:RegisterRequest"/>
+			<output message="tns:RegisterResponse"/>
+		</operation>
+
+		<operation name="verifySession">
+			<input message="tns:SessionStatusRequest"/>
+			<output message="tns:SessionStatusResponse"/>
+		</operation>
+
+		<operation name="signOut">
+			<input message="tns:SignOutRequest"/>
+			<output message="tns:SignOutResponse"/>
+		</operation>
+
+		<operation name="infoUpdate">
+			<input message="tns:InfoUpdateRequest"/>
+			<output message="tns:InfoUpdateResponse"/>
+		</operation>
+
+		<operation name="serviceRequest">
+			<input message="tns:ServiceRequest"/>
+			<output message="tns:ServiceResponse"/>
+		</operation>
+
+		<operation name="updateService">
+			<input message="tns:UpdateServiceRequest"/>
+			<output message="tns:UpdateServiceResponse"/>
+		</operation>
+
+		<!--operation name="getServiceRequestList">
+			<output message="tns:GetServicesResponse"/>
+		</operation-->
+
+		<operation name="getServices">
+			<input message="tns:GetUserServicesRequest"/>
+			<output message="tns:GetUserServicesResponse"/>
+		</operation>
+
+	</portType>
+
+	<binding name="ServiceBinding" type="tns:ServicePortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="signIn">
+			<soap:operation soapAction="http://localhost:8080/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</output>
+		</operation>
+
+		<operation name="register">
+			<soap:operation soapAction="http://localhost:8080/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</output>
+		</operation>
+
+		<operation name="verifySession">
+			<soap:operation soapAction="http://localhost:8080/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</output>
+		</operation>
+
+		<operation name="signOut">
+			<soap:operation soapAction="http://localhost:8080/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</output>
+		</operation>
+
+		<operation name="infoUpdate">
+			<soap:operation soapAction="http://localhost:8080/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</output>
+		</operation>
+
+		<operation name="serviceRequest">
+			<soap:operation soapAction="http://localhost:8080/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</output>
+		</operation>
+
+		<operation name="updateService">
+			<soap:operation soapAction="http://localhost:8080/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</output>
+		</operation>
+
+		<!--operation name="getServiceRequestList">
+			<soap:operation soapAction="http://localhost:8080/MotoHedge/WSDLService.php"/>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</output>
+		</operation-->
+
+		<operation name="getServices">
+			<soap:operation soapAction="http://localhost:8080/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="encoded"/>
+			</output>
+		</operation>
+
+	</binding>
+
+	<service name="MotoHedgeService">
+		<port name="ServicePort" binding="tns:ServiceBinding">
+			<soap:address location="http://localhost:8080/MotoHedge/main.php"/>
+		</port>
+	</service>
+
+</definitions>

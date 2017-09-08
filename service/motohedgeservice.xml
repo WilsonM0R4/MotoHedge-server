@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="MotoHedge"
+	targetNamespace="http://unreleased-reactors.000webhostapp.com/MotoHedge/main.php"
+	xmlns="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:tns="http://unreleased-reactors.000webhostapp.com/MotoHedge/main.php"
+	xmlns:xsd="http://unreleased-reactors.000webhostapp.com/MotoHedge/service/elements.xml">	
+
+	<message name="LoginRequest">
+		<part name="userEmail" element="xsd:string"/>
+		<part name="userPassword" element="xsd:string"/>
+	</message>
+
+	<message name="LoginResponse">
+		<part name="response" element="xsd:loginResponse"/>		
+	</message>
+
+	<message name="RegisterRequest">
+		<!--part name="params" element="xsd:string"/-->
+		<part name="name" element="xsd:string"/>
+		<part name="lastName" element="xsd:string"/>
+		<part name="docType" element="xsd:string"/>
+		<part name="docNumber" element="xsd:string"/>
+		<part name="email" element="xsd:string"/>
+		<part name="cellphone" element="xsd:string"/>
+		<part name="telephone" element="xsd:string"/>
+		<part name="sessionState" element="xsd:string"/>
+		<part name="password" element="xsd:string"/>
+	</message>
+
+	<message name="RegisterResponse">
+		<part name="response" element="xsd:string"/>
+	</message>
+
+	<message name="SessionStatusRequest">
+		<part name="email" element="xsd:string"/>
+	</message>
+
+	<message name="SessionStatusResponse">
+		<part name="response" element="xsd:string"/>
+	</message>
+
+	<message name="SignOutRequest">
+		<part name="email" element="xsd:string"/>
+	</message>
+
+	<message name="SignOutResponse">
+		<part name="response" element="xsd:string"/>
+	</message>
+
+	<message name="InfoUpdateRequest">
+		<part name="name" element="xsd:string"/>
+		<part name="lastName" element="xsd:string"/>
+		<part name="docType" element="xsd:string"/>
+		<part name="docNumber" element="xsd:string"/>			
+		<part name="cellphone" element="xsd:string"/>
+		<part name="telephone" element="xsd:string"/>
+		<part name="session_state" element="xsd:string"/>		
+		<part name="password" element="xsd:string"/>
+		<part name="user" element="tns:string"/>
+	</message>
+
+	<message name="InfoUpdateResponse">
+		<part name="updateResponse" element="xsd:string"/>
+	</message>
+
+	<message name="ServiceRequest">
+		<part name="serviceType" element="xsd:string"/>	
+		<part name="vehicleType" element="xsd:string"/>
+		<part name="serviceAddress" element="xsd:string"/>
+		<part name="serviceLatitude" element="xsd:string"/>
+		<part name="serviceLongitude" element="xsd:string"/>
+		<part name="userComments" element="xsd:string"/>
+		<part name="serviceState" element="xsd:string"/>
+		<part name="userEmail" element="xsd:string"/>
+		<part name="userCellphone" element="xsd:string"/>
+	</message>
+
+	<message name="UpdateServiceRequest">
+		<part name="consecutive" element="xsd:string"/>
+		<part name="state" element="xsd:string"/>
+	</message>
+
+	<message name="UpdateServiceResponse">
+		<part name="result" element="xsd:string"/>
+	</message>
+
+	<message name="ServiceResponse">
+		<part name="serviceResponse" element="xsd:string"/>
+	</message>
+	
+	<message name="GetServicesRequest"/>			
+
+	<message name="GetServicesResponse">
+		<part name="services" element="xsd:servicesList"/>
+	</message>	
+
+	<portType name="ServicePortType">
+		<operation name="signIn">
+			<input message="tns:LoginRequest"/>
+			<output message="tns:LoginResponse"/>
+		</operation>
+
+		<operation name="register">
+			<input message="tns:RegisterRequest"/>
+			<output message="tns:RegisterResponse"/>
+		</operation>
+
+		<operation name="verifySession">
+			<input message="tns:SessionStatusRequest"/>
+			<output message="tns:SessionStatusResponse"/>
+		</operation>
+
+		<operation name="signOut">
+			<input message="tns:SignOutRequest"/>
+			<output message="tns:SignOutResponse"/>
+		</operation>
+
+		<operation name="infoUpdate">
+			<input message="tns:InfoUpdateRequest"/>
+			<output message="tns:InfoUpdateResponse"/>
+		</operation>
+
+		<operation name="serviceRequest">
+			<input message="tns:ServiceRequest"/>
+			<output message="tns:ServiceResponse"/>
+		</operation>
+
+		<operation name="updateState">
+			<input message="tns:UpdateServiceRequest"/>
+			<output message="tns:UpdateServiceResponse"/>
+		</operation>
+
+		<operation name="getServiceRequestList">
+			<!--input message="tns:GetServicesRequest"/-->
+			<output message="tns:GetServicesResponse"/>
+		</operation>
+	</portType>
+
+	<binding name="ServiceBinding" type="tns:ServicePortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="signIn">
+			<soap:operation soapAction="http://unreleased-reactors.000webhostapp.com/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</output>
+		</operation>
+
+		<operation name="register">
+			<soap:operation soapAction="http://unreleased-reactors.000webhostapp.com/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</output>
+		</operation>
+
+		<operation name="verifySession">
+			<soap:operation soapAction="http://unreleased-reactors.000webhostapp.com/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</output>
+		</operation>
+
+		<operation name="signOut">
+			<soap:operation soapAction="http://unreleased-reactors.000webhostapp.com/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</output>
+		</operation>
+
+		<operation name="infoUpdate">
+			<soap:operation soapAction="http://unreleased-reactors.000webhostapp.com/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</output>
+		</operation>
+
+		<operation name="serviceRequest">
+			<soap:operation soapAction="http://unreleased-reactors.000webhostapp.com/MotoHedge/WSDLService.php"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</output>
+		</operation>
+
+		<operation name="updateState">
+			<soap:operation soapAction="http://unreleased-reactors.000webhostapp.com/MotoHedge/WSDLService.php?updateState"/>
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</output>
+		</operation>
+
+		<operation name="getServiceRequestList">
+			<soap:operation soapAction="http://unreleased-reactors.000webhostapp.com/MotoHedge/WSDLService.php"/>
+			<!--input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</input-->
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding" use="literal"/>
+			</output>
+		</operation>
+
+	</binding>
+
+	<service name="MotoHedgeService">
+		<!--documentation></documentation-->
+		<port name="ServicePort" binding="tns:ServiceBinding">
+			<soap:address location="http://unreleased-reactors.000webhostapp.com/MotoHedge/main.php"/>
+		</port>
+	</service>
+
+</definitions>

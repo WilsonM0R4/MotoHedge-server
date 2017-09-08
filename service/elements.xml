@@ -1,0 +1,197 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" attributeFormDefault="qualified" elementFormDefault="qualified"/>
+
+<element name="string" type="xsd:string"/>
+<element name="int" type="xsd:int"/>
+
+<element name="servicesListType">
+	<complexType>
+		<sequence>
+			<part name="serviceConsecutive" element="xsd:string"/>
+			<part name="serviceType" element="xsd:string"/>	
+			<part name="vehicleType" element="xsd:string"/>
+			<part name="serviceAddress" element="xsd:string"/>
+			<part name="serviceLatitude" element="xsd:string"/>
+			<part name="serviceLongitude" element="xsd:string"/>
+			<part name="userComments" element="xsd:string"/>
+			<part name="serviceState" element="xsd:string"/>
+			<part name="userEmail" element="xsd:string"/>
+			<part name="userCellphone" element="xsd:string"/>
+			<part name="date" element="xsd:string"/>
+		</sequence>
+	</complexType>
+</element>
+
+<element name="serviceRequestType">
+	<complexType>
+		<sequence>
+			<part name="serviceType" element="xsd:string"/>	
+			<part name="vehicleType" element="xsd:string"/>
+			<part name="serviceAddress" element="xsd:string"/>
+			<part name="serviceLatitude" element="xsd:string"/>
+			<part name="serviceLongitude" element="xsd:string"/>
+			<part name="userComments" element="xsd:string"/>
+			<part name="serviceState" element="xsd:string"/>
+			<part name="userEmail" element="xsd:string"/>
+			<part name="userCellphone" element="xsd:string"/>
+			<part name="date" element="xsd:string"/>
+		</sequence>
+	</complexType>
+</element>
+
+<element name="serviceUpdateType">
+	<complexType>
+		<sequence>
+			<part name="consecutive" element="xsd:string"/>
+			<part name="serviceType" element="xsd:string" minOccurs="0"/>	
+			<part name="vehicleType" element="xsd:string" minOccurs="0"/>
+			<part name="serviceAddress" element="xsd:string" minOccurs="0"/>
+			<part name="serviceLatitude" element="xsd:string" minOccurs="0"/>
+			<part name="serviceLongitude" element="xsd:string" minOccurs="0"/>
+			<part name="userComments" element="xsd:string" minOccurs="0"/>
+			<part name="serviceState" element="xsd:string" minOccurs="0"/>
+			<part name="userEmail" element="xsd:string" minOccurs="0"/>
+			<part name="userCellphone" element="xsd:string" minOccurs="0"/>
+			<part name="date" element="xsd:string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</element>
+
+<element name="loginElement">
+	<complexType>
+		<all>
+			<element type="xsd:string" name="userEmail"/>
+			<element type="xsd:string" name="userPassword"/>
+		</all>
+	</complexType>
+</element>
+
+<element name="registerElement">
+	<complexType>
+		<all>
+			<element type="xsd:string" name="name"/>
+			<element type="xsd:string" name="lastName"/>
+			<element type="xsd:string" name="docType"/>
+			<element type="xsd:string" name="docNumber"/>
+			<element type="xsd:string" name="email"/>
+			<element type="xsd:string" name="cellphone"/>
+			<element type="xsd:string" name="telephone"/>
+			<element type="xsd:string" name="sessionState"/>
+			<element type="xsd:string" name="password"/>
+		</all>
+	</complexType>
+</element>
+
+<element name="infoUpdateElement">
+	<complexType>
+		<sequence>			
+			<element name="name" element="xsd:string"/>
+			<element name="lastName" element="xsd:string"/>
+			<element name="docType" element="xsd:string"/>
+			<element name="docNumber" element="xsd:string"/>			
+			<element name="cellphone" element="xsd:string"/>
+			<element name="telephone" element="xsd:string"/>
+			<element name="sessionState" element="xsd:string"/>		
+			<element name="password" element="xsd:string"/>
+			<element name="userEmail" element="xsd:string"/>
+		</sequence>
+	</complexType>
+</element>
+
+<element name="userModel">
+	<complexType>
+		<sequence>
+			<element type="xsd:string" name="docType"/>
+			<element type="xsd:string" name="docNumber"/>
+			<element type="xsd:string" name="userName"/>
+			<element type="xsd:string" name="userLastname"/>			
+			<element type="xsd:string" name="userEmail"/>
+			<element type="xsd:string" name="cellphone"/>
+			<element type="xsd:string" name="telephone"/>
+			<element type="xsd:string" name="sessionState"/>
+		</sequence>
+	</complexType>
+</element>
+
+<element name="getServicesRequestType">
+	<complexType>
+		<sequence>
+			<element name="userEmail" type="xsd:string"/>
+			<element name="indexFrom" ttpe="xsd:string"/>
+		</sequence>
+	</complexType>
+</element>
+
+<element name="responseInformation">
+	<complexType>
+		<sequence>
+			<element name="responseCode" type="xsd:string"/>
+			<element name="responseMessage" type="xsd:string"/>
+		</sequence>
+	</complexType>
+</element>
+
+<element name="updateStateElement">
+	<complexType>
+		<sequence>
+			<element name="consecutive" type="xsd:string"/>
+			<element name="state" type="xsd:string"/>
+		</sequence>
+	</complexType>
+</element>
+
+<element name="sessionStateElement">
+	<complexType>
+		<sequence>			
+			<element name="userEmail" type="xsd:string"/>
+		</sequence>
+	</complexType>
+</element>
+
+<element name="loginResponse">
+	<complexType>
+		<sequence>
+			<element name="responseInfo" type="responseInformation"/>
+			<element name="responseData" type="userModel"/>
+		</sequence>
+	</complexType>
+</element>
+
+
+<!--element name="service">
+	<complexType>
+		<complexContent mixed="false">
+		</complexContent>
+		<--sequence-->
+		<!--xsd:restriction base='soapenc:Array'>
+		<!--element name="serviceItem" maxOccurs="unbounded" minOccurs="0" nillable="true" type="xsd:servicesListType"/-->
+			<!--attribute wsdl:arrayType="servicesListType" ref="soapenc:arrayType"/>
+			<!--/sequence-->
+		<!--/xsd:restriction>
+	</complexType-->
+
+	<!--/element-->
+
+	<element name="service">
+		<complexType>
+			<sequence>
+				<!--element name="item" maxOccurs="unbounded" type="servicesListType"/-->
+				<attribute wsdl:arrayType="servicesListType" ref="soapenc:arrayType"/>
+			</sequence>
+		</complexType>
+	</element>
+
+	<element name="userInfo">
+		<complexContent mixed="false">
+		</complexContent>
+
+		<xsd:restriction base="soapenc:Array">
+			<attribute wsdl:arrayType="loginResponseElement" ref="soapenc:arrayType"/>
+		</xsd:restriction>
+	</element>
+
+
+	<element name="loginResponse" element="tns:userInfo"/>
+	<element name="servicesList" element="tns:service"/>
+
+
+
